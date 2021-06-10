@@ -35,9 +35,9 @@ def rec_walk(node, cnt=0):
 def ctrlstr_nstlvl(pyfile, max=-1):
 	with open(pyfile, 'r') as source:
 		tree = ast.parse(source.read())
-
 	ast.NodeVisitor()
-	print(rec_walk(tree))
+	return rec_walk(tree)
+
 
 if __name__ == '__main__':
 	pyfile = "../../src/my_power.py"

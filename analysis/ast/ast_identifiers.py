@@ -28,7 +28,12 @@ def get_identifiers(pyfile):
 		
 	return set(identifiers)
 	
-
+def is_any_identifier_with_length_n(pyfile, n):
+	identifiers = get_identifiers(pyfile)
+	for name in identifiers:
+		if len(name) == n:
+			return True
+	return False
 
 if __name__ == '__main__':
 	pyfile = "../../src/my_sum.py"

@@ -1,7 +1,10 @@
 import unittest
 from src.authenticate import authenticate
+from analysis.ast import ast_identifiers
+from analysis.ast import ast_nestingLevel
 
-class TestSum(unittest.TestCase):
+
+class TestAuth(unittest.TestCase):
 
 
 	def test_true_negative(self):
@@ -34,6 +37,17 @@ class TestSum(unittest.TestCase):
 		self.assertEqual(result, 'Pass')
 		result = authenticate('Victor', '00000000kh')
 		self.assertEqual(result, 'Pass')
+
+	def test_ast_identifiers_length(self):
+		#Check that there are no identifiers with length equal 13
+		result = ast_identifiers.is_any_identifier_with_length_n('src/authenticate.py', 13)
+		self.assertTrue(result)
+
+	def test_ast_nesting_level(self):
+		#Maximum control structure nesting is 4
+		result = ast_nestingLevel.ctrlstr_nstlvl('src/authenticate.py')
+		self.assertTrue(result <= 4)
+
 
 
 

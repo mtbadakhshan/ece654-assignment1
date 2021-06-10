@@ -17,8 +17,8 @@ def authenticate(username, password):
 	with open('./src/hashed-credentials.csv', 'r') as hcred_csv:
 		h_credentials = csv.reader(hcred_csv)
 		for row in h_credentials:
-			if row[0] == username:
-				if row[1] == sha256(password.encode()).hexdigest()[0:4]:
+			if row[0] == username and\
+			 row[1] == sha256(password.encode()).hexdigest()[0:4]:
 					return 'Pass'
 	return 'Fail'
 
